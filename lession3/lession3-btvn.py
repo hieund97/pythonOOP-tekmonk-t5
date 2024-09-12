@@ -1,3 +1,6 @@
+
+# đề bài: https://docs.google.com/document/d/1EKpaQ-fkwRbpviCY9LcHBTNIRhZwmcqIKkC_gl9Ta9Y/edit
+
 import random
 
 class Game:
@@ -28,8 +31,6 @@ class Game:
     @property
     def total_score(self):
         return sum(self.score_list)
-    
-    
     
     def play(self, quantity = 0):
         del self.quantity
