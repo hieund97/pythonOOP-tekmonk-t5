@@ -18,7 +18,7 @@ def draw_star(turtle, size):
         turtle.right(144)
     turtle.end_fill()
 
-    a = caculate_star(size, 180 - 144)
+    a = caculate_star(180 - 144)
 
     fill_star(turtle, size, a)
 
@@ -34,7 +34,7 @@ def fill_star(turtle, size, a):
     turtle.end_fill()
 
 
-def caculate_star(size, angle):
+def caculate_star(angle):
     a = 50 / math.cos(math.pi / angle)
 
     return a
