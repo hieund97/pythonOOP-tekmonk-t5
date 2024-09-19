@@ -3,6 +3,7 @@ import turtle
 
 screen = turtle.Screen()
 screen.title("Lá cờ Việt Nam")
+screen.setup(width=600, height=400)
 screen.bgcolor("red")
 
 star = turtle.Turtle()
@@ -25,7 +26,7 @@ def draw_star(turtle, size):
 def fill_star(turtle, size, a):
     a = 61.8
     turtle.begin_fill()
-    turtle.forward(size)
+    turtle.forward(size + 0.5)
     turtle.right(144)
     turtle.forward(a)
     turtle.right(180 - (180 -2 * 36))
