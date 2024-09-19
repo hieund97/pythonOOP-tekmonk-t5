@@ -59,3 +59,8 @@ $$
 
 ### Kết luận
 Độ dài của hai cạnh còn lại của tam giác là khoảng 61.8 đơn vị.
+
+## Cách 2: 
+Áp dụng Cos trong hình học
+
+Cos(a) = cạnh kề / cạnh huyền
