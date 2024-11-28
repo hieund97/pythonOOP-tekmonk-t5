@@ -20,3 +20,24 @@ Bước 3: Kiểm thử
 Bước 4: Làm slide
 Bước 5: Thuyết trình
 ```
+
+
+
+
+
+```
+Đăng ký Project cuối khoá:
+
+Quyên - Soduku - Pygame
+Tiến - matching image - pygame
+Dũng - Balloon shooting
+
+
+```
+
+Cai dat pygame
+
+```
+pip3 install pygame
+```
+
