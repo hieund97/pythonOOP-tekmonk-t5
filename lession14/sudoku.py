@@ -17,6 +17,7 @@ BLACK = (0, 0, 0)
 GRAY = (200, 200, 200)
 BLUE = (0, 0, 255)
 RED = (255, 0, 0)
+GREEN = (0, 255, 0)
 
 # Fonts
 FONT = pygame.font.Font(None, 36)
@@ -43,20 +44,35 @@ def is_valid(grid, row, col, num):
 
     return True
 
+# Function to solve the Sudoku grid using backtracking
+def solve(grid):
+    for row in range(GRID_SIZE):
+        for col in range(GRID_SIZE):
+            if grid[row][col] == 0:
+                for num in range(1, 10):
+                    if is_valid(grid, row, col, num):
+                        grid[row][col] = num
+                        if solve(grid):
+                            return True
+                        grid[row][col] = 0
+                return False
+    return True
+
 # Function to generate a random Sudoku grid
 def generate_grid():
-    grid = [[0 for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
+    base_grid = [[0 for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
+    solve(base_grid)
+    grid = [row[:] for row in base_grid]
 
-    for _ in range(20):  # Populate with 20 random numbers initially
+    # Remove random numbers to create a puzzle
+    for _ in range(40):  # Remove 40 cells
         row, col = random.randint(0, 8), random.randint(0, 8)
-        num = random.randint(1, 9)
-        if is_valid(grid, row, col, num):
-            grid[row][col] = num
+        grid[row][col] = 0
 
-    return grid
+    return base_grid, grid
 
-# Example Sudoku grid (generated)
-START_GRID = generate_grid()
+# Generate grids
+solution_grid, START_GRID = generate_grid()
 
 # Create a grid to modify during the game
 grid = [row[:] for row in START_GRID]
@@ -132,15 +148,10 @@ def main():
                 if START_GRID[row][col] == 0:  # Allow modification only on empty cells
                     if event.key in range(K_1, K_9 + 1):
                         num = event.key - K_0
-                        if is_valid(grid, row, col, num):
-                            grid[row][col] = num
-                            if (row, col) in wrong_cells:
-                                wrong_cells.remove((row, col))
-                        else:
+                        grid[row][col] = num
+                        if num != solution_grid[row][col]:
                             wrong_cells.append((row, col))
-                            grid[row][col] = num
-                            pygame.time.wait(500)  # Briefly show the wrong number
-                            grid[row][col] = 0
+                        elif (row, col) in wrong_cells:
                             wrong_cells.remove((row, col))
                     elif event.key == K_BACKSPACE:
                         grid[row][col] = 0
