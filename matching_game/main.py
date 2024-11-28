@@ -34,6 +34,8 @@ def create_deck(images):
     random.shuffle(deck)
     return deck
 
+{'id': i, 'number': image, 'flipped': False, 'matched': False}
+
 def reset_game():
     global deck, score, first_card, second_card, start_time, game_over
     deck = create_deck(images)  
