@@ -13,11 +13,12 @@ black = (0, 0, 0)
 screen = py.display.set_mode((screen_width, screen_height))
 py.display.set_caption("Sudoku")
 
-# Vẽ lưới Sudoku
-for l in range(10):
-    width = 2 if l % 3 == 0 else 1
-    py.draw.line(screen, black, (0, l * 80), (720, l * 80), width)  # Đường ngang
-    py.draw.line(screen, black, (l * 80, 0), (l * 80, 720), width)  # Đường dọc
+def draw_grid():
+    # Vẽ lưới Sudoku
+    for l in range(10):
+        width = 2 if l % 3 == 0 else 1
+        py.draw.line(screen, black, (0, l * 80), (720, l * 80), width)  # Đường ngang
+        py.draw.line(screen, black, (l * 80, 0), (l * 80, 720), width)  # Đường dọc
 
 font = py.font.SysFont("monospace", 25)
 clock = py.time.Clock()
